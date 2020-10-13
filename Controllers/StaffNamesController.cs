@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using VisitorManagement.Data;
+using VisitorManagement.DTO;
 using VisitorManagement.Models;
 
 namespace VisitorManagement.Controllers
@@ -20,10 +21,22 @@ namespace VisitorManagement.Controllers
         }
 
         // GET: StaffNames
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.StaffNames.ToListAsync());
-        }
+      
+            // GET: StaffNames
+            public async Task<IActionResult> Index()
+            {
+                var Staffnames = _context.StaffNames.Select(s => new StaffNamesDTO()
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    Department = s.Department,
+                    VisitorCount = s.VisitorCount
+                }).ToListAsync();
+                //old code
+                //await _context.StaffNames.ToListAsync()
+                return View(await Staffnames);
+            }
+        
 
         // GET: StaffNames/Details/5
         public async Task<IActionResult> Details(int? id)
