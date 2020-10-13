@@ -30,9 +30,10 @@ namespace VisitorManagement
         {
             services.AddSingleton<ITextFileOperations, TextFileOperations>();
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(
+            //        Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source = Identity.db"));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddDbContext<VisitorDbContext>(options => options.UseSqlite("Data Source = VMan.db"));

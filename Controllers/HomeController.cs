@@ -29,20 +29,7 @@ namespace VisitorManagement.Controllers
 
         public IActionResult Index()
         {
-
-            ViewBag.Welcome = "Welcome to the Visitor Management System V2";
-
-            ViewBag.NewVisitor = new Visitors()
-            {
-
-                FirstName = "Howard",
-                LastName = "Davis"
-
-            };
-
-            ViewData["Welcome2"] = "This is another welcome";
-
-
+            ViewData["ConditionsHeader"] = "Conditions of Entry";
 
             ViewData["Conditions"] = _textFileOperations.LoadConditionsText();
             return View();

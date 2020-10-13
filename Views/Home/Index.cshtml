@@ -1,14 +1,25 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Visitor Management";
 }
 
 <div class="text-center">
+    <h2>@ViewData["ConditionsHeader"]</h2>
+</div>
 
-    <div class="row">
-        @foreach (var item in (IEnumerable<string>) ViewData["Conditions"]) 
+<div class="row">
+    @foreach (var item in (IEnumerable<string>)ViewData["Conditions"])
+    {
+        if (item.ToString().Contains("Heading"))
         {
-            @item.ToString();
+            <div class="form-group col-md-12">
+                <h3> @item.ToString().Replace("Heading", "")</h3>
+            </div>
         }
-    </div>
-
+        else
+        {
+            <div class="form-group col-md-3 text-left">
+                @item.ToString()
+            </div>
+        }
+    }
 </div>
