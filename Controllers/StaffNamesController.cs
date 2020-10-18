@@ -25,16 +25,15 @@ namespace VisitorManagement.Controllers
             // GET: StaffNames
             public async Task<IActionResult> Index()
             {
-                var Staffnames = _context.StaffNames.Select(s => new StaffNamesDTO()
-                {
-                    Id = s.Id,
-                    Name = s.Name,
-                    Department = s.Department,
-                    VisitorCount = s.VisitorCount
-                }).ToListAsync();
-                //old code
-                //await _context.StaffNames.ToListAsync()
-                return View(await Staffnames);
+            var Staffnames = _context.StaffNames.Select(s => new StaffNamesDTO()
+            {
+                Id = s.Id,
+                Name = s.Name,
+                Department = s.Department,
+                VisitorCount = s.VisitorCount
+            }).ToListAsync();
+
+            return View(await Staffnames);
             }
         
 

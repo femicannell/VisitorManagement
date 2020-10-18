@@ -29,7 +29,7 @@ namespace VisitorManagement.Controllers
 
         public IActionResult Index()
         {
-            ViewData["ConditionsHeader"] = "Conditions of Entry";
+            ViewData["ConditionsHeader"] = "SNZ Pathfinders";
 
             ViewData["Conditions"] = _textFileOperations.LoadConditionsText();
             return View();
